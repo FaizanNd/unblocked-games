@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Skills</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .hidden {
+            display: none;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+        .game-list {
+            max-height: 300px;
+            overflow-y: auto;
+            border: 1px solid white;
+            padding: 10px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .game-list button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #1e1e1e;
+            color: white;
+            border: none;
+            margin-bottom: 5px;
+            cursor: pointer;
+        }
+        iframe {
+            width: 600px;
+            height: 400px;
+            border: none;
+        }
+        p { font-size: 14px; color: gray; }
+        .rip-999 {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            color: red;
+        }
+        .logo-container {
+            position: absolute;
+            top: 10px;
+            right: 50px;
+        }
+        .logo-container img {
+            width: 50px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="rip-999">RIP 999</div>
+    </div>
+    <div id="passwordScreen">
+        <h2>Enter Password to Access Games</h2>
+        <input type="password" id="passwordInput" placeholder="Enter Password">
+        <button onclick="checkPassword()">Submit</button>
+        <p>This site was created by Moe at GL (ask him for the password)</p>
+        <p id="errorMessage" style="color: red;"></p>
+    </div>
+    
+    <div id="gamesSection" class="hidden">
+        <h1>Math Skills - AP Algebra for college students</h1>
+        <div class="game-list" id="gameList">
+            <button onclick="loadGame('https://d21u3ic0kp9e91.cloudfront.net/elasticman/0/index.html')">Elastic Man</button>
+            <button onclick="loadGame('https://unblocked-games.s3.amazonaws.com/games/2023/mjs/minesweeper/index.html')">Mine Sweeper</button>
+            <button onclick="loadGame('https://survival-race.io/survival-race.embed')">Survival Race</button>
+            <button onclick="loadGame('https://basketbros.io/')">Basket Bros</button>
+            <button onclick="loadGame('https://cdn.htmlgames.com/Tapman/')">Pacman From Wish Apparently</button>
+            <button onclick="loadGame('https://www.hoodamath.com/mobile/games/dino-game/game.html?nocheckorient=1')">Google Dino Game</button>
+            <button onclick="loadGame('https://www.hoodamath.com/mobile/games/snow-rider-3d/game.html?nocheckorient=1')">Snow Rider 3D</button>
+            <button onclick="loadGame('https://playhop.com/app/288720?skip-guard=1&header=no')">Survival Race</button>
+            <button onclick="loadGame('https://cloud.onlinegames.io/games/2024/unity3/block-blast/index-og.html')">Block Blast</button>
+            <button onclick="loadGame('https://slopeio.org/slope.embed')">Slope</button>
+            <!-- 40 extra slots -->
+            <script>
+                for (let i = 11; i <= 50; i++) {
+                    document.getElementById("gameList").innerHTML += `<button onclick="loadGame('https://example.com/game${i}')">Soon ${i}</button>`;
+                }
+            </script>
+        </div>
+    </div>
+    
+    <script>
+        function checkPassword() {
+            const password = document.getElementById("passwordInput").value;
+            if (password === "WRLD") {
+                document.getElementById("passwordScreen").classList.add("hidden");
+                document.getElementById("gamesSection").classList.remove("hidden");
+            } else {
+                document.getElementById("errorMessage").innerText = "Incorrect password!";
+            }
+        }
+        
+        function loadGame(url) {
+            const newTab = window.open("about:blank", "_blank");
+            newTab.document.write(`<!DOCTYPE html><html><head><title>Game</title><style>body { margin: 0; overflow: hidden; height: 100vh; } iframe { width: 100vw; height: 100vh; border: none; }</style></head><body><iframe src="${url}" frameborder="0"></iframe></body></html>`);
+            newTab.document.close();
+        }
+    </script>
+</body>
+</html>
